@@ -1,4 +1,5 @@
 var HttpError = require('../lib/http-error');
+var accountsRepo = require('../repository/accounts');
 
 /**
  * Checks the Authorization header against the database.
@@ -15,7 +16,9 @@ module.exports.authenticate = function (req, res, next) {
     var basic = parseBasicAuth(authorization);
     if (!basic) return next(new HttpError(400, 'Authorization broken'));
 
-    // todo: validate userId/password
+    var account = accountsRepo.findByUserName(basic.userId);
+    if (!account || account.password !== basic.password)
+        return next(new HttpError(401, 'Unauthorized'));
 
     req.authenticatedUserName = basic.userId;
 

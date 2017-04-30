@@ -1,11 +1,17 @@
 var assert = require('chai').assert;
 var supertest = require('supertest');
 var app = require('../app');
+var accountsRepo = require('../repository/accounts');
 
 var testApp = supertest(app);
 
 describe('route /users/me', function () {
     describe('GET', function () {
+        beforeEach(function() {
+            accountsRepo.__set([
+                {_id: 1, userName: 'user1', password: 'pass1'}
+            ]);
+        });
         it('Should authenticate', function (done) {
             testApp.get('/users/me')
                 .expect(401)
@@ -14,10 +20,10 @@ describe('route /users/me', function () {
         });
         it('Should respond with user info', function (done) {
             testApp.get('/users/me')
-                .set('Authorization', basicAuth('rob', 'S3cr1t'))
+                .set('Authorization', basicAuth('user1', 'pass1'))
                 .expect(200)
                 .expect('Content-Type', 'application/json; charset=utf-8')
-                .expect({userName: 'rob'}, done);
+                .expect({userName: 'user1'}, done);
         })
     });
 });
