@@ -1,9 +1,11 @@
+var R = require('ramda');
 
 module.exports.__set = __set;
 module.exports.__get = __get;
 module.exports.save = save;
 module.exports.getById = getById;
 module.exports.findByRoomName = findByRoomName;
+module.exports.getRoomNames = getRoomNames;
 
 var items = [];
 
@@ -46,14 +48,15 @@ function update(message) {
 }
 
 function getById(messageId) {
-    var results = items.filter(function (item) {
-        return (item._id === messageId);
-    });
-    return results.length === 1 ? results[0] : null;
+    var filterById = R.filter(R.where({_id: R.equals(messageId)}));
+    return R.head(filterById(items));
 }
 
 function findByRoomName(roomName) {
-    return items.filter(function (item) {
-        return (item.roomName === roomName);
-    });
+    var filterByRoomName = R.filter(R.where({roomName: R.equals(roomName)}));
+    return filterByRoomName(items);
+}
+
+function getRoomNames() {
+    return R.uniq(R.pluck('roomName', items));
 }

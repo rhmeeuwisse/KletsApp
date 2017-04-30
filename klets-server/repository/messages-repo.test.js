@@ -74,6 +74,19 @@ describe('MessagesRepo', function () {
         });
     });
 
+    describe('getById', function () {
+        it('Should return message by _id', function () {
+            accounts.__set([
+                message1,
+                message2,
+                message3
+            ]);
+            assert.deepEqual(accounts.getById('message1'), message1);
+            assert.deepEqual(accounts.getById('message2'), message2);
+            assert.deepEqual(accounts.getById('message3'), message3);
+        });
+    });
+
     describe('findByRoomName', function () {
 
         it('Should return messages by room', function () {
@@ -86,5 +99,21 @@ describe('MessagesRepo', function () {
             assert.sameDeepMembers(accounts.findByRoomName('room1'), [message1]);
             assert.sameDeepMembers(accounts.findByRoomName('room2'), [message2, message3]);
         })
-    })
+    });
+
+    describe('getRoomNames', function () {
+
+        it('Should return distinct room names', function () {
+            accounts.__set([
+                message1,
+                message2,
+                message3
+            ]);
+
+            var actual = accounts.getRoomNames();
+            assert.lengthOf(actual, 2);
+            assert.sameDeepMembers(actual, ['room1', 'room2']);
+        })
+
+    });
 });
