@@ -1,8 +1,14 @@
 export const RECEIVE_ROOMS = 'RECEIVE_ROOMS'
+export const SELECT_ROOM = 'SELECT_ROOM'
+
+export const selectRoom = (selectedRoom) => ({
+    type: SELECT_ROOM,
+    selectedRoom
+})
 
 export const receiveRooms = (rooms) => ({
     type: RECEIVE_ROOMS,
-    rooms: rooms
+    rooms
 })
 
 /////////////////////

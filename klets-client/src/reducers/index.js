@@ -1,7 +1,16 @@
 import {combineReducers} from 'redux'
-import {RECEIVE_ROOMS} from '../actions'
+import {SELECT_ROOM, RECEIVE_ROOMS} from '../actions'
 
-const rooms = (state = ['Initial rooms list'], action) => {
+const selectedRoom = (state = 'The Soapbox', action) => {
+    switch (action.type) {
+        case SELECT_ROOM:
+            return action.selectedRoom
+        default:
+            return state
+    }
+}
+
+const rooms = (state = ['The Soapbox', 'Questions & Answers', 'Latest news'], action) => {
     switch (action.type) {
         case RECEIVE_ROOMS:
             return action.rooms
@@ -71,6 +80,7 @@ const postsByReddit = (state = {}, action) => {
 }
 
 const rootReducer = combineReducers({
+    selectedRoom,
     rooms,
     postsByReddit,
     selectedReddit
