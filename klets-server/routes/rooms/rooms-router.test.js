@@ -25,7 +25,7 @@ describe('route /rooms', function () {
                 .expect('Access-Control-Allow-Origin', '*')
                 .expect('Content-Type', 'application/json; charset=utf-8')
                 .expect({
-                    roomNames: [
+                    rooms: [
                         'room1', 'room2', 'room3'
                     ]
                 }, done);
