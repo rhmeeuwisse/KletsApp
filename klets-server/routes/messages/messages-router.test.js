@@ -1,7 +1,7 @@
 var assert = require('chai').assert;
 var supertest = require('supertest');
-var app = require('../app');
-var messageRepo = require('../repository/message-repo');
+var app = require('../../app');
+var messageRepo = require('../../repository/message-repo');
 
 var testApp = supertest(app);
 

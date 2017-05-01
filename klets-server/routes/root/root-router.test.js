@@ -1,6 +1,6 @@
 var assert = require('chai').assert;
 var supertest = require('supertest');
-var app = require('../app');
+var app = require('../../app');
 
 var testApp = supertest(app);
 

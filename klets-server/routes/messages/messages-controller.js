@@ -1,5 +1,5 @@
-var HttpError = require('../lib/http-error');
-var messageRepo = require('../repository/message-repo');
+var HttpError = require('../../lib/http-error');
+var messageRepo = require('../../repository/message-repo');
 
 module.exports.create = function (req, res, next) {
     var message = req.body.message;

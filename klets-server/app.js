@@ -3,9 +3,9 @@ var path = require('path');
 var logger = require('morgan');
 var HttpError = require('./lib/http-error');
 
-var rootRouter = require('./routes/root-router');
-var roomsRouter = require('./routes/rooms-router');
-var messagesRouter = require('./routes/messages-router');
+var rootRouter = require('./routes/root/root-router');
+var roomsRouter = require('./routes/rooms/rooms-router');
+var messagesRouter = require('./routes/messages/messages-router');
 
 var app = express();
 

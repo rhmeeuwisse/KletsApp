@@ -1,4 +1,4 @@
-var messageRepo = require('../repository/message-repo');
+var messageRepo = require('../../repository/message-repo');
 
 module.exports.list = function (req, res, next) {
     res.json({
