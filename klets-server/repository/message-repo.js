@@ -1,4 +1,5 @@
 var R = require('ramda');
+var assert = require('chai').assert;
 
 module.exports.__set = __set;
 module.exports.__get = __get;
@@ -18,14 +19,10 @@ function __get() {
 }
 
 function save(message) {
-    if (!message._id)
-        throw new Error('Missing message._id');
-    if (!message.roomName)
-        throw new Error('Missing message.roomName');
-    if (!message.userName)
-        throw new Error('Missing message.userName');
-    if (!message.text)
-        throw new Error('Missing message.text');
+    assert.isDefined(message._id);
+    assert.isDefined(message.roomName);
+    assert.isDefined(message.userName);
+    assert.isDefined(message.text);
 
     var item = getById(message._id);
     if (!item)

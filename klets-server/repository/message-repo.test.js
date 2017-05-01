@@ -14,22 +14,22 @@ describe('repository MessageRepo', function () {
         it('Should throw on missing message._id', function () {
             assert.throws(function () {
                 accounts.save(Object.assign({}, message1, {_id: undefined}));
-            }, /Missing message._id/);
+            }, /AssertionError/);
         });
         it('Should throw on missing message.roomName', function () {
             assert.throws(function () {
                 accounts.save(Object.assign({}, message1, {roomName: undefined}));
-            }, /Missing message.roomName/);
+            }, /AssertionError/);
         });
         it('Should throw on missing message.userName', function () {
             assert.throws(function () {
                 accounts.save(Object.assign({}, message1, {userName: undefined}));
-            }, /Missing message.userName/);
+            }, /AssertionError/);
         });
         it('Should throw on missing message.text', function () {
             assert.throws(function () {
                 accounts.save(Object.assign({}, message1, {text: undefined}));
-            }, /Missing message.text/);
+            }, /AssertionError/);
         });
 
         it('Should create', function () {
