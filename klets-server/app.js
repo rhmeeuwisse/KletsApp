@@ -18,17 +18,17 @@ app.use('/rooms', rooms);
 app.use('/messages', messages);
 
 // catch unhandled routes
-app.use(function(req, res, next) {
-  next(new HttpError(404, 'Not found'));
+app.use(function (req, res, next) {
+    next(new HttpError(404, 'Not found'));
 });
 
 // generic error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(function (err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  res.status(err.status || 500).send(err.message);
+    res.status(err.status || 500).send(err.message);
 });
 
 module.exports = app;
