@@ -3,9 +3,9 @@ var path = require('path');
 var logger = require('morgan');
 var HttpError = require('./lib/http-error');
 
-var index = require('./routes/index');
-var rooms = require('./routes/rooms');
-var messages = require('./routes/messages');
+var rootRouter = require('./routes/root-router');
+var roomsRouter = require('./routes/rooms-router');
+var messagesRouter = require('./routes/messages-router');
 
 var app = express();
 
@@ -13,9 +13,9 @@ app.set('x-powered-by', false);
 
 app.use(logger('dev'));
 
-app.use('/', index);
-app.use('/rooms', rooms);
-app.use('/messages', messages);
+app.use('/', rootRouter);
+app.use('/rooms', roomsRouter);
+app.use('/messages', messagesRouter);
 
 // catch unhandled routes
 app.use(function (req, res, next) {
