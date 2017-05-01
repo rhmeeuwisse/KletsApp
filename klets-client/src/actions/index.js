@@ -1,3 +1,12 @@
+export const RECEIVE_ROOMS = 'RECEIVE_ROOMS'
+
+export const receiveRooms = (rooms) => ({
+    type: RECEIVE_ROOMS,
+    rooms
+})
+
+/////////////////////
+
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const SELECT_REDDIT = 'SELECT_REDDIT'

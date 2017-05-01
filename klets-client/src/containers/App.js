@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {selectReddit, fetchPostsIfNeeded, invalidateReddit} from '../actions'
+import {receiveRooms} from '../actions'
 import Picker from '../components/Picker'
 import Posts from '../components/Posts'
 
@@ -38,11 +39,19 @@ class App extends Component {
         dispatch(fetchPostsIfNeeded(selectedReddit))
     }
 
+    handleLoadRoomsClick = e => {
+        e.preventDefault()
+
+        const {dispatch} = this.props
+        dispatch(receiveRooms(['foo', 'bar', 'baz']))
+    }
+
     render() {
         const {selectedReddit, posts, isFetching, lastUpdated} = this.props
         const isEmpty = posts.length === 0
         return (
             <div>
+                <button onClick={this.handleLoadRoomsClick} >Load rooms</button>
                 <Picker value={selectedReddit}
                         onChange={this.handleChange}
                         options={['reactjs', 'frontend']}/>

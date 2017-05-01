@@ -1,4 +1,17 @@
 import {combineReducers} from 'redux'
+import {RECEIVE_ROOMS} from '../actions'
+
+const rooms = (state = [], action) => {
+    switch (action.type) {
+        case RECEIVE_ROOMS:
+            return action.rooms
+        default:
+            return state
+    }
+}
+
+///////////////////////
+
 import {
     SELECT_REDDIT, INVALIDATE_REDDIT,
     REQUEST_POSTS, RECEIVE_POSTS
@@ -58,6 +71,7 @@ const postsByReddit = (state = {}, action) => {
 }
 
 const rootReducer = combineReducers({
+    rooms,
     postsByReddit,
     selectedReddit
 })
