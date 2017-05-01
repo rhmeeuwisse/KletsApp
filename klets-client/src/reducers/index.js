@@ -10,7 +10,7 @@ const selectedRoom = (state = 'The Soapbox', action) => {
     }
 }
 
-const rooms = (state = ['The Soapbox', 'Questions & Answers', 'Latest news'], action) => {
+const rooms = (state = [], action) => {
     switch (action.type) {
         case RECEIVE_ROOMS:
             return action.rooms

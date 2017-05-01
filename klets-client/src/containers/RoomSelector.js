@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {selectRoom, receiveRooms} from '../actions'
+import {selectRoom, fetchRooms} from '../actions'
 import Picker from '../components/Picker'
 import Rooms from '../components/Rooms'
 
@@ -12,26 +12,19 @@ class RoomSelector extends Component {
     }
 
     componentDidMount() {
-        //const {dispatch} = this.props
-        //dispatch(receiveRooms(['foo', 'bar', 'baz'])) //todo: dispatch fetchRoomsIfNeeded
+        const {dispatch} = this.props
+        dispatch(fetchRooms()) //todo: dispatch fetchRoomsIfNeeded
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.selectedRoom !== this.props.selectedRoom) {
-            //const {dispatch, selectedRoom} = this.props
-            //dispatch(receiveRooms(['foo', 'bar', 'baz'])) //todo: dispatch fetchRoomsIfNeeded
+            const {dispatch} = this.props
+            dispatch(fetchRooms()) //todo: dispatch fetchRoomsIfNeeded
         }
     }
 
     handleRoomChange = nextRoom => {
         this.props.dispatch(selectRoom(nextRoom))
-    }
-
-    handleRefreshRoomsClick = e => {
-        e.preventDefault()
-
-        const {dispatch} = this.props
-        dispatch(receiveRooms(['foo', 'bar', 'baz']))
     }
 
     render() {
@@ -42,7 +35,6 @@ class RoomSelector extends Component {
                         onChange={this.handleRoomChange}
                         options={rooms}/>
 
-                <button onClick={this.handleRefreshRoomsClick} >Refresh rooms</button>
                 <Rooms rooms={rooms} selectedRoom={selectedRoom}/>
             </div>
         )
