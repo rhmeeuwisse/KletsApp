@@ -5,6 +5,7 @@ var HttpError = require('./lib/http-error');
 
 var index = require('./routes/index');
 var rooms = require('./routes/rooms');
+var messages = require('./routes/messages');
 
 var app = express();
 
@@ -17,6 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/rooms', rooms);
+app.use('/messages', messages);
 
 // catch unhandled routes
 app.use(function(req, res, next) {
