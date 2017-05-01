@@ -35,16 +35,17 @@ function save(message) {
 }
 
 function insert(message) {
-    items.push(message);
+    items = R.append(message, items);
 }
 
 function update(message) {
-    items = items.map(function (item) {
-        if (item._id === message._id)
+    var updater = function (item) {
+        if (R.equals(item._id, message._id))
             return message;
         else
             return item;
-    });
+    };
+    items = R.map(updater, items);
 }
 
 function getById(messageId) {
@@ -53,10 +54,10 @@ function getById(messageId) {
 }
 
 function findByRoomName(roomName) {
-    var filterByRoomName = R.filter(R.where({roomName: R.equals(roomName)}));
-    return filterByRoomName(items);
+    var filterByRoom = R.filter(R.where({roomName: R.equals(roomName)}));
+    return filterByRoom(items);
 }
 
 function getRoomNames() {
-    return R.uniq(R.pluck('roomName', items));
+    return R.sort(R.gt, R.uniq(R.pluck('roomName', items)));
 }
