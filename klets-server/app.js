@@ -4,7 +4,7 @@ var logger = require('morgan');
 var HttpError = require('./lib/http-error');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var rooms = require('./routes/rooms');
 
 var app = express();
 
@@ -16,7 +16,7 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/rooms', rooms);
 
 // catch unhandled routes
 app.use(function(req, res, next) {
