@@ -76,7 +76,7 @@ describe('repository MessageRepo', function () {
         });
     });
 
-    describe('findByRoomName', function () {
+    describe('getMessagesByRoom', function () {
         it('Should return messages by room', function () {
             accounts.__set([
                 message1,
@@ -84,8 +84,8 @@ describe('repository MessageRepo', function () {
                 message3,
                 message4
             ]);
-            assert.sameDeepMembers(accounts.findByRoomName('room1'), [message1, message2]);
-            assert.sameDeepMembers(accounts.findByRoomName('room2'), [message3, message4]);
+            assert.sameDeepMembers(accounts.getMessagesByRoom('room1'), [message1, message2]);
+            assert.sameDeepMembers(accounts.getMessagesByRoom('room2'), [message3, message4]);
         })
     });
 

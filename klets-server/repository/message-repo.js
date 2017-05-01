@@ -4,7 +4,7 @@ module.exports.__set = __set;
 module.exports.__get = __get;
 module.exports.save = save;
 module.exports.getById = getById;
-module.exports.findByRoomName = findByRoomName;
+module.exports.getMessagesByRoom = getMessagesByRoom;
 module.exports.getRoomNames = getRoomNames;
 
 var items = [];
@@ -53,7 +53,7 @@ function getById(messageId) {
     return R.head(filterById(items));
 }
 
-function findByRoomName(roomName) {
+function getMessagesByRoom(roomName) {
     var filterByRoom = R.filter(R.where({roomName: R.equals(roomName)}));
     return filterByRoom(items);
 }

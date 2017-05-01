@@ -9,6 +9,6 @@ module.exports.list = function (req, res, next) {
 module.exports.listRoomMessages = function (req, res, next) {
     var roomName = req.params.roomName;
     res.json({
-        messages: messageRepo.findByRoomName(roomName)
+        messages: messageRepo.getMessagesByRoom(roomName)
     });
 };
