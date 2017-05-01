@@ -1,6 +1,8 @@
-export const FETCH_ROOMS = 'FETCH_ROOMS'
+export const FETCH_ROOMS = 'FETCH_ROOMS' // todo: remove unused?
 export const RECEIVE_ROOMS = 'RECEIVE_ROOMS'
 export const SELECT_ROOM = 'SELECT_ROOM'
+export const FETCH_ROOM_MESSAGES = 'FETCH_ROOM_MESSAGES' // todo: remove unused?
+export const RECEIVE_ROOM_MESSAGES = 'RECEIVE_ROOM_MESSAGES'
 
 export const selectRoom = (selectedRoom) => ({
     type: SELECT_ROOM,
@@ -16,6 +18,17 @@ export const fetchRooms = () => dispatch => {
     return fetch(`http://localhost:3030/rooms`)
         .then(response => response.json())
         .then(json => dispatch(receiveRooms(json.rooms)))
+}
+
+export const receiveRoomMessages = (messages) => ({
+    type: FETCH_ROOM_MESSAGES,
+    messages
+})
+
+export const fetchRoomMessages = (selectedRoom) => dispatch => {
+    return fetch(`http://localhost:3030/rooms/${selectedRoom}/messages`)
+        .then(response => response.json())
+        .then(json => dispatch(receiveRoomMessages(json.messages)))
 }
 
 /////////////////////
