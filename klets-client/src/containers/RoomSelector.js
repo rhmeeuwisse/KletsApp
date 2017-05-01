@@ -18,7 +18,7 @@ class RoomSelector extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.selectedRoom !== this.props.selectedRoom) {
-            const {dispatch} = this.props
+            const {dispatch} = nextProps
             dispatch(fetchRooms()) //todo: dispatch fetchRoomsIfNeeded
         }
     }

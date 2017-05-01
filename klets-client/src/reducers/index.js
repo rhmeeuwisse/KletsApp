@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux'
-import {SELECT_ROOM, RECEIVE_ROOMS} from '../actions'
+import {SELECT_ROOM, RECEIVE_ROOMS, INVALIDATE_ROOM_MESSAGES, RECEIVE_ROOM_MESSAGES} from '../actions'
 
 const selectedRoom = (state = 'The Soapbox', action) => {
     switch (action.type) {
@@ -19,61 +19,12 @@ const rooms = (state = [], action) => {
     }
 }
 
-///////////////////////
-
-import {
-    SELECT_REDDIT, INVALIDATE_REDDIT,
-    REQUEST_POSTS, RECEIVE_POSTS
-} from '../actions'
-
-const selectedReddit = (state = 'reactjs', action) => {
+const roomMessages = (state = [], action) => {
     switch (action.type) {
-        case SELECT_REDDIT:
-            return action.reddit
-        default:
-            return state
-    }
-}
-
-const posts = (state = {
-    isFetching: false,
-    didInvalidate: false,
-    items: []
-}, action) => {
-    switch (action.type) {
-        case INVALIDATE_REDDIT:
-            return {
-                ...state,
-                didInvalidate: true
-            }
-        case REQUEST_POSTS:
-            return {
-                ...state,
-                isFetching: true,
-                didInvalidate: false
-            }
-        case RECEIVE_POSTS:
-            return {
-                ...state,
-                isFetching: false,
-                didInvalidate: false,
-                items: action.posts,
-                lastUpdated: action.receivedAt
-            }
-        default:
-            return state
-    }
-}
-
-const postsByReddit = (state = {}, action) => {
-    switch (action.type) {
-        case INVALIDATE_REDDIT:
-        case RECEIVE_POSTS:
-        case REQUEST_POSTS:
-            return {
-                ...state,
-                [action.reddit]: posts(state[action.reddit], action)
-            }
+        case INVALIDATE_ROOM_MESSAGES:
+            return []
+        case RECEIVE_ROOM_MESSAGES:
+            return action.roomMessages
         default:
             return state
     }
@@ -82,8 +33,7 @@ const postsByReddit = (state = {}, action) => {
 const rootReducer = combineReducers({
     selectedRoom,
     rooms,
-    postsByReddit,
-    selectedReddit
+    roomMessages
 })
 
 export default rootReducer
