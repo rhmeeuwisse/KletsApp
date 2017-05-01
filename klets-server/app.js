@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
+var slow = require('connect-slow');
 var HttpError = require('./lib/http-error');
 
 var rootRouter = require('./routes/root/root-router');
@@ -14,6 +15,7 @@ app.set('x-powered-by', false);
 app.use(logger('dev'));
 
 app.use('/', rootRouter);
+app.use(slow());
 app.use('/rooms', roomsRouter);
 app.use('/messages', messagesRouter);
 
