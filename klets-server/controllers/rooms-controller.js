@@ -1,12 +1,14 @@
-var HttpError = require('../lib/http-error');
 var messagesRepo = require('../repository/messages-repo');
 
 module.exports.list = function (req, res, next) {
-
-    var roomNames = messagesRepo.getRoomNames();
-
     res.json({
-        roomNames: roomNames
+        roomNames: messagesRepo.getRoomNames()
     });
+};
 
+module.exports.listRoomMessages = function (req, res, next) {
+    var roomName = req.params.roomName;
+    res.json({
+        messages: messagesRepo.findByRoomName(roomName)
+    });
 };

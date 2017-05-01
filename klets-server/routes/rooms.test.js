@@ -5,26 +5,13 @@ var messagesRepo = require('../repository/messages-repo');
 
 var testApp = supertest(app);
 
-describe('route /rooms', function () {
+const message1 = message('message1', 'room1', 'user1', 'lorem1');
+const message2 = message('message2', 'room2', 'user2', 'lorem2');
+const message3 = message('message3', 'room3', 'user3', 'lorem3');
+const message4 = message('message4', 'room3', 'user1', 'lorem4');
+const message5 = message('message5', 'room3', 'user2', 'lorem5');
 
-    const message1 = {
-        _id: 'message1',
-        roomName: 'room1',
-        userName: 'user1',
-        text: 'lorem1'
-    };
-    const message2 = {
-        _id: 'message2',
-        roomName: 'room2',
-        userName: 'user2',
-        text: 'lorem2'
-    };
-    const message3 = {
-        _id: 'message3',
-        roomName: 'room3',
-        userName: 'user3',
-        text: 'lorem3'
-    };
+describe('route /rooms', function () {
 
     describe('GET', function () {
         it('Should respond with room names sorted', function (done) {
@@ -35,13 +22,47 @@ describe('route /rooms', function () {
             testApp.get('/rooms')
                 .expect(200)
                 .expect('Content-Type', 'application/json; charset=utf-8')
-                .expect({roomNames: [
-                    'room1', 'room2', 'room3'
-                ]}, done);
+                .expect({
+                    roomNames: [
+                        'room1', 'room2', 'room3'
+                    ]
+                }, done);
         })
     });
 });
 
-function basicAuth(userId, password) {
-    return 'Basic ' + new Buffer(userId + ':' + password).toString('base64');
+describe('route /rooms/:room/messages', function () {
+    describe('GET', function () {
+        it('Should respond with messages for known room', function (done) {
+            messagesRepo.__set([
+                message1, message2, message3, message4, message5
+            ]);
+            testApp.get('/rooms/room3/messages')
+                .expect(200)
+                .expect('Content-Type', 'application/json; charset=utf-8')
+                .expect({
+                    messages: [
+                        message3, message4, message5
+                    ]
+                }, done);
+        });
+        it('Should respond with empty messages for unknown room', function (done) {
+            messagesRepo.__set([]);
+            testApp.get('/rooms/non-existent/messages')
+                .expect(200)
+                .expect('Content-Type', 'application/json; charset=utf-8')
+                .expect({
+                    messages: []
+                }, done);
+        })
+    });
+});
+
+function message(_id, roomName, userName, text) {
+    return {
+        _id: _id,
+        roomName: roomName,
+        userName: userName,
+        text: text
+    }
 }
