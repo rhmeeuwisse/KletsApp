@@ -1,14 +1,14 @@
 var messageRepo = require('../../repository/message-repo');
 
 module.exports.list = function (req, res, next) {
-    res.json({
+    res.set('Access-Control-Allow-Origin', '*').json({
         roomNames: messageRepo.getRoomNames()
     });
 };
 
 module.exports.listRoomMessages = function (req, res, next) {
     var roomName = req.params.roomName;
-    res.json({
+    res.set('Access-Control-Allow-Origin', '*').json({
         messages: messageRepo.getMessagesByRoom(roomName)
     });
 };

@@ -22,6 +22,7 @@ describe('route /rooms', function () {
 
             testApp.get('/rooms')
                 .expect(200)
+                .expect('Access-Control-Allow-Origin', '*')
                 .expect('Content-Type', 'application/json; charset=utf-8')
                 .expect({
                     roomNames: [
@@ -40,6 +41,7 @@ describe('route /rooms/:room/messages', function () {
             ]);
             testApp.get('/rooms/room3/messages')
                 .expect(200)
+                .expect('Access-Control-Allow-Origin', '*')
                 .expect('Content-Type', 'application/json; charset=utf-8')
                 .expect({
                     messages: [
@@ -51,6 +53,7 @@ describe('route /rooms/:room/messages', function () {
             messageRepo.__set([]);
             testApp.get('/rooms/non-existent/messages')
                 .expect(200)
+                .expect('Access-Control-Allow-Origin', '*')
                 .expect('Content-Type', 'application/json; charset=utf-8')
                 .expect({
                     messages: []
