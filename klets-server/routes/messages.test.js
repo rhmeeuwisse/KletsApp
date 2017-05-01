@@ -31,20 +31,27 @@ describe('route /messages', function () {
                 })
                 .end(done);
         });
-        it('Should be idempotent', function (done) {
+        it('Should update message', function (done) {
             messageRepo.__set([
                 message1,
                 message2
             ]);
             testApp.post('/messages')
                 .send({
-                    message: message2
+                    message: Object.assign({}, message2, { text: 'updated'})
                 })
                 .expect(201)
                 .expect('Content-Type', 'text/plain; charset=utf-8')
                 .expect(/Created/)
                 .expect(function () {
-                    assert.deepEqual(messageRepo.__get(), [message1, message2]);
+                    assert.deepEqual(messageRepo.__get(), [
+                        message1,
+                        {
+                            _id: message2._id,
+                            userName: message2.userName,
+                            roomName: message2.roomName,
+                            text: 'updated'
+                        }]);
                 })
                 .end(done);
         });
