@@ -1,6 +1,7 @@
 var assert = require('chai').assert;
 var supertest = require('supertest');
 var app = require('../../app');
+var message = require('../../repository/message');
 var messageRepo = require('../../repository/message-repo');
 
 var testApp = supertest(app);
@@ -57,12 +58,3 @@ describe('route /rooms/:room/messages', function () {
         })
     });
 });
-
-function message(_id, roomName, userName, text) {
-    return {
-        _id: _id,
-        roomName: roomName,
-        userName: userName,
-        text: text
-    }
-}

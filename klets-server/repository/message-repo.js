@@ -1,5 +1,6 @@
 var R = require('ramda');
 var assert = require('chai').assert;
+var message = require('./message');
 
 module.exports.__set = __set;
 module.exports.__get = __get;
@@ -8,7 +9,11 @@ module.exports.getById = getById;
 module.exports.getMessagesByRoom = getMessagesByRoom;
 module.exports.getRoomNames = getRoomNames;
 
-var items = [];
+var items = [
+    message(1, 'The Soapbox', 'Klets', 'Anything goes on the Soapbox...'),
+    message(2, 'Questions & Answers', 'Klets', 'Everything that you have always wanted to know: ask it here!'),
+    message(3, 'Breaking news', 'Klets', 'Got something new? Let us know!')
+];
 
 function __set(value) {
     items = value || [];
