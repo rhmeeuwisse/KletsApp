@@ -1,13 +1,13 @@
 var assert = require('chai').assert;
-var accounts = require('./messages-repo');
+var accounts = require('./message-repo');
 
-describe('MessagesRepo', function () {
+const message1 = {_id: 'message1', roomName: 'room1', userName: 'user1', text: 'lorem1'};
+const message2 = {_id: 'message2', roomName: 'room1', userName: 'user2', text: 'lorem2'};
+const message3 = {_id: 'message3', roomName: 'room2', userName: 'user1', text: 'lorem3'};
+const message4 = {_id: 'message4', roomName: 'room2', userName: 'user2', text: 'lorem4'};
+const message5 = {_id: 'message5', roomName: 'room3', userName: 'user1', text: 'lorem5'};
 
-    const message1 = {_id: 'message1', roomName: 'room1', userName: 'user1', text: 'lorem1'};
-    const message2 = {_id: 'message2', roomName: 'room1', userName: 'user2', text: 'lorem2'};
-    const message3 = {_id: 'message3', roomName: 'room2', userName: 'user1', text: 'lorem3'};
-    const message4 = {_id: 'message4', roomName: 'room2', userName: 'user2', text: 'lorem4'};
-    const message5 = {_id: 'message5', roomName: 'room3', userName: 'user1', text: 'lorem5'};
+describe('repository MessageRepo', function () {
 
     describe('save', function () {
 
@@ -37,11 +37,10 @@ describe('MessagesRepo', function () {
                 message1,
                 message2
             ]);
-
             accounts.save(Object.assign({}, message3));
-
             assert.deepEqual(accounts.__get(), [message1, message2, message3]);
         });
+
         it('Should update', function () {
             accounts.__set([
                 message1,
@@ -49,9 +48,7 @@ describe('MessagesRepo', function () {
                 message3,
                 message4
             ]);
-
             accounts.save(Object.assign({}, message2, {text: 'foobar'}));
-
             assert.deepEqual(accounts.__get(), [
                 message1,
                 {
@@ -80,7 +77,6 @@ describe('MessagesRepo', function () {
     });
 
     describe('findByRoomName', function () {
-
         it('Should return messages by room', function () {
             accounts.__set([
                 message1,
@@ -88,14 +84,12 @@ describe('MessagesRepo', function () {
                 message3,
                 message4
             ]);
-
             assert.sameDeepMembers(accounts.findByRoomName('room1'), [message1, message2]);
             assert.sameDeepMembers(accounts.findByRoomName('room2'), [message3, message4]);
         })
     });
 
     describe('getRoomNames', function () {
-
         it('Should return distinct and sorted room names', function () {
             accounts.__set([
                 message1,
@@ -104,9 +98,7 @@ describe('MessagesRepo', function () {
                 message3,
                 message4
             ]);
-
             assert.deepEqual(accounts.getRoomNames(), ['room1', 'room2', 'room3']);
         })
-
     });
 });

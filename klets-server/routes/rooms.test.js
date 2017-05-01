@@ -1,7 +1,7 @@
 var assert = require('chai').assert;
 var supertest = require('supertest');
 var app = require('../app');
-var messagesRepo = require('../repository/messages-repo');
+var messageRepo = require('../repository/message-repo');
 
 var testApp = supertest(app);
 
@@ -15,7 +15,7 @@ describe('route /rooms', function () {
 
     describe('GET', function () {
         it('Should respond with room names sorted', function (done) {
-            messagesRepo.__set([
+            messageRepo.__set([
                 message3, message1, message2
             ]);
 
@@ -34,7 +34,7 @@ describe('route /rooms', function () {
 describe('route /rooms/:room/messages', function () {
     describe('GET', function () {
         it('Should respond with messages for known room', function (done) {
-            messagesRepo.__set([
+            messageRepo.__set([
                 message1, message2, message3, message4, message5
             ]);
             testApp.get('/rooms/room3/messages')
@@ -47,7 +47,7 @@ describe('route /rooms/:room/messages', function () {
                 }, done);
         });
         it('Should respond with empty messages for unknown room', function (done) {
-            messagesRepo.__set([]);
+            messageRepo.__set([]);
             testApp.get('/rooms/non-existent/messages')
                 .expect(200)
                 .expect('Content-Type', 'application/json; charset=utf-8')
