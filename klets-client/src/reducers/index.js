@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux'
 import {RECEIVE_ROOMS} from '../actions'
 
-const rooms = (state = [], action) => {
+const rooms = (state = ['Initial rooms list'], action) => {
     switch (action.type) {
         case RECEIVE_ROOMS:
             return action.rooms

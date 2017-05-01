@@ -5,9 +5,11 @@ import {selectReddit, fetchPostsIfNeeded, invalidateReddit} from '../actions'
 import {receiveRooms} from '../actions'
 import Picker from '../components/Picker'
 import Posts from '../components/Posts'
+import Rooms from '../components/Rooms'
 
 class App extends Component {
     static propTypes = {
+        rooms: PropTypes.array.isRequired,
         selectedReddit: PropTypes.string.isRequired,
         posts: PropTypes.array.isRequired,
         isFetching: PropTypes.bool.isRequired,
@@ -48,10 +50,12 @@ class App extends Component {
 
     render() {
         const {selectedReddit, posts, isFetching, lastUpdated} = this.props
+        const {rooms} = this.props
         const isEmpty = posts.length === 0
         return (
             <div>
                 <button onClick={this.handleLoadRoomsClick} >Load rooms</button>
+                <Rooms rooms={rooms}/>
                 <Picker value={selectedReddit}
                         onChange={this.handleChange}
                         options={['reactjs', 'frontend']}/>
@@ -81,6 +85,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
+    const {rooms} = state
     const {selectedReddit, postsByReddit} = state
     const {
         isFetching,
@@ -92,6 +97,7 @@ const mapStateToProps = state => {
     }
 
     return {
+        rooms,
         selectedReddit,
         posts,
         isFetching,
