@@ -13,14 +13,30 @@ class RoomMessages extends Component {
     componentDidMount() {
         const {dispatch, selectedRoom} = this.props
         dispatch(fetchRoomMessages(selectedRoom)) //todo: dispatch fetchRoomsIfNeeded
+        this.startPoll()
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.selectedRoom !== this.props.selectedRoom) {
-            const {dispatch, selectedRoom} = nextProps
-            dispatch(clearRoomMessages(selectedRoom))
-            dispatch(fetchRoomMessages(selectedRoom)) //todo: dispatch fetchRoomsIfNeeded
+            const {dispatch} = this.props
+            dispatch(clearRoomMessages(this.props.selectedRoom))
+            dispatch(fetchRoomMessages(nextProps.selectedRoom)) //todo: dispatch fetchRoomsIfNeeded
         }
+    }
+
+    componentWillUnmount() {
+        this.stopPoll()
+    }
+
+    startPoll() {
+        this.timeoutId = setTimeout(() => {
+            this.props.dispatch(fetchRoomMessages(this.props.selectedRoom))
+            this.startPoll()
+        }, 2000);
+    }
+
+    stopPoll() {
+        clearTimeout(this.timeoutId);
     }
 
     render() {
@@ -34,10 +50,9 @@ class RoomMessages extends Component {
 }
 
 const mapStateToProps = state => {
-    const {selectedRoom, roomMessages} = state
     return {
-        selectedRoom,
-        roomMessages
+        selectedRoom: state.selectedRoom,
+        roomMessages: state.roomMessages
     }
 }
 
