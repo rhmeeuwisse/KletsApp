@@ -1,0 +1,29 @@
+.App-header {
+    height: 64px;
+    width: 100%;
+    line-height: 64px;
+    display: inline-block;
+    vertical-align: middle;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    background: steelblue;
+    color: floralwhite;
+    font-family: Georgia, serif;
+}
+
+.App-logo {
+    height: 64px;
+    width: auto;
+    margin-right: 32px;
+    line-height: 64px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.App-title {
+    font-size: 48px;
+    vertical-align: middle;
+}
