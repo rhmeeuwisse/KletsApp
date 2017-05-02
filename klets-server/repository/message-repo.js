@@ -11,8 +11,10 @@ module.exports.getRoomNames = getRoomNames;
 
 var items = [
     message(1, 'The Soapbox', 'Klets', 'Anything goes on the Soapbox...'),
-    message(2, 'Questions & Answers', 'Klets', 'Everything that you have always wanted to know: ask it here!'),
-    message(3, 'Breaking news', 'Klets', 'Got something new? Let us know!')
+    message(2, 'The Soapbox', 'Klets', 'Let\'s know your heart-felt opinions.'),
+    message(3, 'The Soapbox', 'Klets', 'Keep it civil and nice. Keep it interesting and passionate.'),
+    message(4, 'Questions & Answers', 'Klets', 'Everything that you have always wanted to know: ask it here!'),
+    message(5, 'Breaking news', 'Klets', 'Got something new? Let us know!')
 ];
 
 function __set(value) {
