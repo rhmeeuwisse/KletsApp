@@ -1,6 +1,13 @@
 import {combineReducers} from 'redux'
 import {SELECT_ROOM, RECEIVE_ROOMS, INVALIDATE_ROOM_MESSAGES, RECEIVE_ROOM_MESSAGES} from '../actions'
 
+const selectedUser = (state = 'Rob', action) => {
+    switch (action.type) {
+        default:
+            return state
+    }
+}
+
 const selectedRoom = (state = 'The Soapbox', action) => {
     switch (action.type) {
         case SELECT_ROOM:
@@ -31,6 +38,7 @@ const roomMessages = (state = [], action) => {
 }
 
 const rootReducer = combineReducers({
+    selectedUser,
     selectedRoom,
     rooms,
     roomMessages

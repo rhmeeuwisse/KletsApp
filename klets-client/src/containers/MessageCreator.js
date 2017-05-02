@@ -37,7 +37,7 @@ class MessageCreator extends React.Component {
             this.setState({
                 messageText: ''
             });
-            this.props.dispatch(createRoomMessage(this.props.selectedRoom, 'Rob', messageText));
+            this.props.dispatch(createRoomMessage(this.props.selectedRoom, this.props.selectedUser, messageText));
         }
     }
 
@@ -57,6 +57,7 @@ class MessageCreator extends React.Component {
 }
 
 const mapStateToProps = state => ({
+    selectedUser: state.selectedUser,
     selectedRoom: state.selectedRoom,
     rooms: state.rooms
 })
