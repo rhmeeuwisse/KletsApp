@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {invalidateRoomMessages, fetchRoomMessages} from '../actions'
+import MessagesList from '../components/MessagesList'
 
 class RoomMessages extends Component {
     static propTypes = {
@@ -25,13 +26,7 @@ class RoomMessages extends Component {
     render() {
         const messages = this.props.roomMessages
         if (messages) {
-            return (<ul>
-                {messages.map((message, i) => {
-                    return <li key={i}>
-                        {message.text}
-                    </li>
-                })}
-            </ul>)
+            return (<MessagesList messages={messages} />)
         } else {
             return <p>There's nothing here but the sound of crickets...</p>
         }
