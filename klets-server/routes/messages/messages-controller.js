@@ -11,7 +11,7 @@ module.exports.create = function (req, res, next) {
 
     messageRepo.save(message);
 
-    res.sendStatus(201);
+    res.set('Access-Control-Allow-Origin', '*').sendStatus(201);
 };
 
 function checkDefined(value, fieldName) {
