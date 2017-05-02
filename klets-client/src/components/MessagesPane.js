@@ -1,10 +1,14 @@
 import React from 'react'
 import RoomMessages from '../containers/RoomMessages'
+import MessageCreator from '../containers/MessageCreator'
 import './App.css'
 
 const MessagesPane = () => (
     <section className="RightPane MessagesPane">
-        <RoomMessages />
+        <div className="MessagesContainer">
+            <MessageCreator />
+            <RoomMessages />
+        </div>
     </section>
 )
 

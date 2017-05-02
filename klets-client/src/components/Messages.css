@@ -1,0 +1,45 @@
+.MessagesPane {
+    width: 60%;
+    background: lightsteelblue;
+}
+
+.MessagesContainer {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    right: 16px;
+    bottom: 8px;
+}
+
+.MessageCreator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+}
+
+#MessageCreatorButton {
+    position: absolute;
+    right: 0;
+    width: 80px;
+    background: steelblue;
+    color: lightsteelblue;
+    font-family: Helvetica, sans-serif;
+    font-size: larger;
+    line-height: 150%;
+}
+
+#MessageCreatorInputDiv {
+    margin-right: 100px;
+}
+
+#MessageCreatorInputDiv > input {
+    position: relative;
+    top: 2px;
+    width: 100%;
+    font-family: Helvetica, sans-serif;
+    font-size: larger;
+    line-height: 150%;
+}
+

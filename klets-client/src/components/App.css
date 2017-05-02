@@ -1,20 +1,23 @@
 .AppHeader {
+    position: absolute;
     background: steelblue;
 }
 
 .AppHeader-logo {
+    position: absolute;
+    top: 8px;
+    left: 16px;
     height: 64px;
     width: auto;
-    margin-right: 32px;
-    line-height: 64px;
-    vertical-align: middle;
-    display: inline-block;
 }
 
 .AppHeader-title {
+    position: absolute;
+    left: 40%;
+    line-height: 80px;
+    vertical-align: middle;
     font-family: Georgia, serif;
     font-size: 48px;
-    vertical-align: middle;
 }
 .AppHeader-maintitle {
     color: floralwhite;
@@ -28,9 +31,4 @@
     color: lightsteelblue;
     font-family: Verdana, sans-serif;
     text-align: center;
-}
-
-.MessagesPane {
-    width: 60%;
-    background: lightsteelblue;
 }

@@ -11,7 +11,7 @@ class RoomSelector extends React.Component {
             <div className="RoomCreator">
                 <button id="RoomCreatorButton">Go</button>
                 <div id="RoomCreatorInputDiv">
-                    <input type="text" placeholder="Create a room"/>
+                    <input type="text" placeholder="Get a room!"/>
                 </div>
             </div>
         )
