@@ -15,7 +15,7 @@ app.set('x-powered-by', false);
 app.use(logger('dev'));
 
 app.use('/', rootRouter);
-app.use(slow());
+//app.use(slow());
 app.use('/rooms', roomsRouter);
 app.use('/messages', messagesRouter);
 
