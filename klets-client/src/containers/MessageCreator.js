@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import '../components/Messages.css'
-import {createRoomMessage} from '../actions'
+import {postRoomMessage} from '../actions'
 
 class MessageCreator extends React.Component {
     static propTypes = {
@@ -37,7 +37,7 @@ class MessageCreator extends React.Component {
             this.setState({
                 messageText: ''
             });
-            this.props.dispatch(createRoomMessage(this.props.selectedRoom, this.props.selectedUser, messageText));
+            this.props.dispatch(postRoomMessage(this.props.selectedRoom, this.props.selectedUser, messageText));
         }
     }
 
