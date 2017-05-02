@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux'
-import {SELECT_ROOM, RECEIVE_ROOMS, INVALIDATE_ROOM_MESSAGES, RECEIVE_ROOM_MESSAGES} from '../actions'
+import {SELECT_ROOM, RECEIVE_ROOMS, CLEAR_ROOM_MESSAGES, RECEIVE_ROOM_MESSAGES} from '../actions'
 
 const selectedUser = (state = 'Rob', action) => {
     switch (action.type) {
@@ -28,7 +28,7 @@ const rooms = (state = [], action) => {
 
 const roomMessages = (state = [], action) => {
     switch (action.type) {
-        case INVALIDATE_ROOM_MESSAGES:
+        case CLEAR_ROOM_MESSAGES:
             return []
         case RECEIVE_ROOM_MESSAGES:
             return action.roomMessages

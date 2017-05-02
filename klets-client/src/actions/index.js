@@ -1,7 +1,7 @@
 export const TOAST_MESSAGE = 'TOAST_MESSAGE'
 export const RECEIVE_ROOMS = 'RECEIVE_ROOMS'
 export const SELECT_ROOM = 'SELECT_ROOM'
-export const INVALIDATE_ROOM_MESSAGES = 'INVALIDATE_ROOM_MESSAGES'
+export const CLEAR_ROOM_MESSAGES = 'CLEAR_ROOM_MESSAGES'
 export const RECEIVE_ROOM_MESSAGES = 'RECEIVE_ROOM_MESSAGES'
 
 /**
@@ -31,8 +31,12 @@ export const fetchRooms = () => dispatch => {
         .then(json => dispatch(receiveRooms(json.rooms)))
 }
 
-export const invalidateRoomMessages = (selectedRoom) => ({
-    type: INVALIDATE_ROOM_MESSAGES,
+/**
+ * Clear the room messages
+ * @param selectedRoom Ignored, but useful in the logs
+ */
+export const clearRoomMessages = (selectedRoom) => ({
+    type: CLEAR_ROOM_MESSAGES,
     selectedRoom
 })
 

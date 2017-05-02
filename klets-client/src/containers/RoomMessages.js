@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {invalidateRoomMessages, fetchRoomMessages} from '../actions'
+import {clearRoomMessages, fetchRoomMessages} from '../actions'
 import MessagesList from '../components/MessagesList'
 
 class RoomMessages extends Component {
@@ -18,7 +18,7 @@ class RoomMessages extends Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.selectedRoom !== this.props.selectedRoom) {
             const {dispatch, selectedRoom} = nextProps
-            dispatch(invalidateRoomMessages(selectedRoom))
+            dispatch(clearRoomMessages(selectedRoom))
             dispatch(fetchRoomMessages(selectedRoom)) //todo: dispatch fetchRoomsIfNeeded
         }
     }
