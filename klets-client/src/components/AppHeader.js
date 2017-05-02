@@ -3,9 +3,12 @@ import PropTypes from 'prop-types'
 import './Style.css'
 
 const AppHeader = ({userName}) => (
-    <header className="App-header">
-        <img className="App-logo" src="/klets-logo.png" />
-        <span className="App-title">Klets - room for talk</span>
+    <header className="PageHeader App-header">
+        <img className="App-logo" src="/klets-logo.png" alt="App logo"/>
+        <span className="App-title">
+            <span className="App-maintitle">Klets/</span>
+            <span className="App-subtitle">room for talk</span>
+        </span>
     </header>
 )
 
