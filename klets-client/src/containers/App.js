@@ -1,12 +1,13 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import Page from '../components/Page'
 import AppHeader from '../components/AppHeader'
 import RoomsPane from '../components/RoomsPane'
 import RoomPane from '../components/MessagesPane'
 import AppFooter from '../components/AppFooter'
 import './Reset.css'
-import './Page.css'
+import '../components/Page.css'
 
 class App extends Component {
     static propTypes = {
@@ -16,12 +17,12 @@ class App extends Component {
 
     render() {
         return (
-            <div className="PageContainer">
+            <Page>
                 <AppHeader />
                 <RoomsPane />
                 <RoomPane />
                 <AppFooter />
-            </div>
+            </Page>
         )
     }
 }
