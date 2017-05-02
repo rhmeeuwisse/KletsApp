@@ -34,3 +34,12 @@ export const fetchRoomMessages = (selectedRoom) => dispatch => {
         .then(response => response.json())
         .then(json => dispatch(receiveRoomMessages(json.messages)))
 }
+
+export const createRoomMessage = (roomName, userName, text) => dispatch => {
+    dispatch(receiveRoomMessages([{
+        _id: 1,
+        roomName: roomName,
+        userName: userName,
+        text: text
+    }]))
+}

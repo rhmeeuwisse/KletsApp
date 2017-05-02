@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import '../components/Messages.css'
+import {createRoomMessage} from '../actions'
 
 class MessageCreator extends React.Component {
     static propTypes = {
@@ -22,16 +23,22 @@ class MessageCreator extends React.Component {
 
     handleMessageTextKeyUp = (e) => {
         if (e.keyCode === 13)
-            this.createMessage()
+            this.handleCreateMessage()
     }
 
     handleCreateMessageClick = (e) => {
         e.preventDefault();
-        this.createMessage()
+        this.handleCreateMessage()
     }
 
-    createMessage = () => {
-        alert('Creating message: "' + this.state.messageText + '"');
+    handleCreateMessage = () => {
+        const messageText = this.state.messageText.trim();
+        if (messageText.length !== 0) {
+            this.setState({
+                messageText: ''
+            });
+            this.props.dispatch(createRoomMessage(this.props.selectedRoom, 'Rob', messageText));
+        }
     }
 
     render() {
@@ -40,6 +47,7 @@ class MessageCreator extends React.Component {
                 <button id="MessageCreatorButton" onClick={this.handleCreateMessageClick}>Post</button>
                 <div id="MessageCreatorInputDiv">
                     <input type="text" placeholder="Write something, anything..."
+                           value={this.state.messageText}
                            onChange={this.handleMessageTextChange}
                            onKeyUp={this.handleMessageTextKeyUp} />
                 </div>
