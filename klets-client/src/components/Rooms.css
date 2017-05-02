@@ -1,0 +1,63 @@
+.RoomsPane {
+    background: lightsteelblue;
+}
+
+.RoomSelector {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    right: 16px;
+    bottom: 8px;
+}
+
+.RoomsList {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    font-family: Helvetica, sans-serif;
+    font-size: larger;
+    line-height: 150%;
+}
+
+.RoomsList > li {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.RoomsList > .Highlighted {
+    background: steelblue;
+    color: floralwhite;
+}
+
+.RoomCreator {
+    height: auto;
+    margin-bottom: 10px;
+}
+
+#RoomCreatorButton {
+    position: absolute;
+    right: 0;
+    width: 80px;
+    background: steelblue;
+    color: lightsteelblue;
+    font-family: Helvetica, sans-serif;
+    font-size: larger;
+    line-height: 150%;
+}
+
+#RoomCreatorInputDiv {
+    margin-right: 100px;
+}
+
+#RoomCreatorInputDiv > input {
+    position: relative;
+    top: 2px;
+    width: 100%;
+    font-family: Helvetica, sans-serif;
+    font-size: larger;
+    line-height: 150%;
+}
+

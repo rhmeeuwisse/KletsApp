@@ -1,14 +1,12 @@
-import React, {Component} from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import {connect} from 'react-redux'
 import {selectRoom, fetchRooms} from '../actions'
-import Picker from '../components/Picker'
-import Rooms from '../components/Rooms'
+import RoomsList from '../components/RoomsList'
+import RoomCreator from '../containers/RoomCreator'
 
-class RoomSelector extends Component {
+class RoomSelector extends React.Component {
     static propTypes = {
-        selectedRoom: PropTypes.string.isRequired,
-        rooms: PropTypes.array.isRequired
+        /* Connected via react-redux */
     }
 
     componentDidMount() {
@@ -30,24 +28,17 @@ class RoomSelector extends Component {
     render() {
         const {selectedRoom, rooms} = this.props
         return (
-            <div>
-                <Picker value={selectedRoom}
-                        onChange={this.handleRoomChange}
-                        options={rooms}/>
-
-                <Rooms rooms={rooms} selectedRoom={selectedRoom}/>
+            <div className="RoomSelector">
+                <RoomCreator />
+                <RoomsList rooms={rooms} selectedRoom={selectedRoom} onRoomClick={this.handleRoomChange}/>
             </div>
         )
     }
 }
 
-const mapStateToProps = state => {
-    const {selectedRoom} = state
-    const {rooms} = state
-    return {
-        selectedRoom,
-        rooms
-    }
-}
+const mapStateToProps = state => ({
+    selectedRoom: state.selectedRoom,
+    rooms: state.rooms
+})
 
 export default connect(mapStateToProps)(RoomSelector)
