@@ -31,4 +31,6 @@
     color: lightsteelblue;
     font-family: Verdana, sans-serif;
     text-align: center;
+    line-height: 32px;
+    vertical-align: middle;
 }
