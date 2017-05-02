@@ -2,17 +2,46 @@ import React from 'react'
 import {connect} from 'react-redux'
 import '../components/Messages.css'
 
-class MessageSelector extends React.Component {
+class MessageCreator extends React.Component {
     static propTypes = {
         /* Connected via react-redux */
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            messageText: ''
+        }
+    }
+
+    handleMessageTextChange = (e) => {
+        this.setState({
+            messageText: e.target.value
+        })
+    }
+
+    handleMessageTextKeyUp = (e) => {
+        if (e.keyCode === 13)
+            this.createMessage()
+    }
+
+    handleCreateMessageClick = (e) => {
+        e.preventDefault();
+        this.createMessage()
+    }
+
+    createMessage = () => {
+        alert('Creating message: "' + this.state.messageText + '"');
     }
 
     render() {
         return (
             <div className="MessageCreator">
-                <button id="MessageCreatorButton">Post</button>
+                <button id="MessageCreatorButton" onClick={this.handleCreateMessageClick}>Post</button>
                 <div id="MessageCreatorInputDiv">
-                    <input type="text" placeholder="Write something, anything..."/>
+                    <input type="text" placeholder="Write something, anything..."
+                           onChange={this.handleMessageTextChange}
+                           onKeyUp={this.handleMessageTextKeyUp} />
                 </div>
             </div>
         )
@@ -24,4 +53,4 @@ const mapStateToProps = state => ({
     rooms: state.rooms
 })
 
-export default connect(mapStateToProps)(MessageSelector)
+export default connect(mapStateToProps)(MessageCreator)
