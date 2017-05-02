@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Style.css'
+import './App.css'
 
 const AppFooter = ({userName}) => (
-    <footer className="PageFooter App-footer">
+    <footer className="PageFooter AppFooter">
         <span>A React Redux sample app</span>
     </footer>
 )

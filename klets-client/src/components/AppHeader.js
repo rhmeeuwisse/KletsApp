@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Style.css'
+import './App.css'
 
 const AppHeader = ({userName}) => (
-    <header className="PageHeader App-header">
-        <img className="App-logo" src="/klets-logo.png" alt="App logo"/>
-        <span className="App-title">
-            <span className="App-maintitle">Klets/</span>
-            <span className="App-subtitle">room for talk</span>
+    <header className="PageHeader AppHeader">
+        <img className="AppHeader-logo" src="/klets-logo.png" alt="Klets logo"/>
+        <span className="AppHeader-title">
+            <span className="AppHeader-maintitle">Klets/</span>
+            <span className="AppHeader-subtitle">room for talk</span>
         </span>
     </header>
 )

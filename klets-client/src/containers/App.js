@@ -5,7 +5,6 @@ import RoomsPane from '../components/RoomsPane'
 import MessagesPane from '../components/MessagesPane'
 import AppFooter from '../components/AppFooter'
 import './Reset.css'
-import '../components/Page.css'
 
 class App extends React.Component {
 

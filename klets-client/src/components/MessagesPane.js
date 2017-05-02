@@ -1,9 +1,9 @@
 import React from 'react'
 import RoomMessages from '../containers/RoomMessages'
-import './Style.css'
+import './App.css'
 
 const MessagesPane = () => (
-    <section className="RightPane Messages-pane">
+    <section className="RightPane MessagesPane">
         <RoomMessages />
     </section>
 )

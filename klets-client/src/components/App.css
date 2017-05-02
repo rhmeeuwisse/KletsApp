@@ -1,8 +1,8 @@
-.App-header {
+.AppHeader {
     background: steelblue;
 }
 
-.App-logo {
+.AppHeader-logo {
     height: 64px;
     width: auto;
     margin-right: 32px;
@@ -11,25 +11,26 @@
     display: inline-block;
 }
 
-.App-title {
+.AppHeader-title {
     font-family: Georgia, serif;
     font-size: 48px;
     vertical-align: middle;
 }
-.App-maintitle {
+.AppHeader-maintitle {
     color: floralwhite;
 }
-.App-subtitle {
+.AppHeader-subtitle {
     color: lightsteelblue;
 }
 
-.App-footer {
+.AppFooter {
     background: steelblue;
     color: lightsteelblue;
     font-family: Verdana, sans-serif;
     text-align: center;
 }
-.Rooms-pane {
+
+.RoomsPane {
     padding-top: 10px;
     padding-left: 20px;
     padding-right: 10px;
@@ -37,7 +38,7 @@
     background: lightsteelblue;
 }
 
-.Messages-pane {
+.MessagesPane {
     width: 60%;
     padding-top: 10px;
     padding-left: 10px;

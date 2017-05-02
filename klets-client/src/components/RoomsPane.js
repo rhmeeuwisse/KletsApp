@@ -1,9 +1,9 @@
 import React from 'react'
 import RoomSelector from '../containers/RoomSelector'
-import './Style.css'
+import './App.css'
 
 const RoomsPane = () => (
-    <section className="LeftPane Rooms-pane">
+    <section className="LeftPane RoomsPane">
         <RoomSelector />
     </section>
 )
