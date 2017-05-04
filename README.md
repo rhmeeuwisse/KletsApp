@@ -11,3 +11,5 @@ Open the console, navigate to sub directory /klets-server and run commands 'npm 
 Then open another console, navigate to sub directory /klets-client and run commands 'npm install' and then 'npm start'. This will open your browser with http://localhost:3000 with Klets app. 
 
 You can open another tab in your browser to simulate multiple clients.
+
+![Klets app screenshot](screenshot.png "Klets app screenshot")
