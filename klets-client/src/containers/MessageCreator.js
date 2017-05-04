@@ -46,7 +46,7 @@ class MessageCreator extends React.Component {
             <div className="MessageCreator">
                 <button id="MessageCreatorButton" onClick={this.handleCreateMessageClick}>Post</button>
                 <div id="MessageCreatorInputDiv">
-                    <input type="text" placeholder="Write something, anything..."
+                    <input type="text" placeholder="What would you like to say?..."
                            value={this.state.messageText}
                            onChange={this.handleMessageTextChange}
                            onKeyUp={this.handleMessageTextKeyUp} />
