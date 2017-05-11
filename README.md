@@ -1,5 +1,5 @@
 # Klets app
-A sample chat app programmed in Node.js.
+A sample chat app built in Node.js using [React](https://reactjs.net/) and [Redux](http://redux.js.org/).
 
 The app consists of both a client and server component. 
 
